@@ -1,8 +1,8 @@
-###Multipath and LVM setup
+### Multipath and LVM setup
 
 Multipathing ensures that the system uses multiple physical paths to provide redundancy and increased throughput.
 
-###How to install multipath in ubuntu:
+### How to install multipath in ubuntu:
 ```bash
 sudo apt-get install multipath-tools
 ```
@@ -39,7 +39,7 @@ multipath -ll
 if creating intially,copy wwid number obtained from "multipath ll" command.which shows partion name and wwid numbers,copying new wwid no's 
  to /etc/multipath/wwid and restarting services
  
- ###LVM creation for multipath enabled storage
+ ### LVM creation for multipath enabled storage
  
  ```bash
  ls -l /dev/mapper
@@ -51,7 +51,7 @@ if creating intially,copy wwid number obtained from "multipath ll" command.which
  fdisk -l /dev/mapper/mpathb
 ```
  where /dev/mapper/mpatha,mpathb are multipath enabled partions available volumes.
- ####To create physical volumes
+ #### To create physical volumes
  ```bash
  pvcreate /dev/mapper/mpatha``
  ```
@@ -65,7 +65,7 @@ if creating intially,copy wwid number obtained from "multipath ll" command.which
  ```bash
  pvdisplay
  ```
- ####To create volume group
+ #### To create volume group
  ```bash 
  vgcreate vgname /dev/mapper/mpatha /dev/mapper/mpathb
  ```
@@ -77,7 +77,7 @@ if creating intially,copy wwid number obtained from "multipath ll" command.which
  ```bash
  vgdisplay
  ```
- ####To create Logical volumes
+ #### To create Logical volumes
  ```bash
  lvcreate -l 100%FREE -n lgname vgname
  ```
@@ -94,7 +94,7 @@ if creating intially,copy wwid number obtained from "multipath ll" command.which
  ```bash
  lvdisplay
  ```
- ####Now format newly created logical volumes to specific filesystem.
+ #### Now format newly created logical volumes to specific filesystem.
  ```bash
  mkfs.ext4 /dev/lgname/vgname
  ```
@@ -117,7 +117,7 @@ vi /etc/fstab
 ``UID=93838619-6c00-472b-af9b-686ea58faa95 /var ext4  defaults   0     2
 save and exit.
 ```
-###To extend LVM partions from LUNS
+### To extend LVM partions from LUNS
 
 firstly scan available storage from below command 
 ```bash
