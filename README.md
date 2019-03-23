@@ -1,2 +1,2 @@
 # project
-bel
+bel-related projects
